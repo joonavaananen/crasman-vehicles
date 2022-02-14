@@ -78,11 +78,15 @@ const VehicleCardContainer = ({
       )}
     </Picture>
     <Container>
-      <Link href={url} passHref>
-        <Anchor>
-          <Title>{`${make} ${model}`}</Title>
-        </Anchor>
-      </Link>
+      {url ? (
+        <Link href={url} passHref>
+          <Anchor>
+            <Title>{`${make} ${model}`}</Title>
+          </Anchor>
+        </Link>
+      ) : (
+        <Title>{`${make} ${model}`}</Title>
+      )}
       <Price>{price}</Price>
       <SpecificationContainer>
         <Specification>{model_year}</Specification>
