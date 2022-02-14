@@ -22,8 +22,10 @@ const getStaticPaths = async () => {
 };
 
 const getStaticProps = async ({ params }) => {
-  const [page] = params.route;
-  const data = await getVehicles(parseInt(page));
+  let [page] = params.route;
+  page = parseInt(page) || 1;
+
+  const data = await getVehicles(page);
 
   return {
     props: { data },
