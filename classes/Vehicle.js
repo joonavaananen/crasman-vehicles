@@ -14,6 +14,10 @@ class Vehicle {
     this.kilometrage = `${parseInt(this.kilometrage).toLocaleString(
       LOCALE
     )} km`;
+
+    this.url = `/vehicle/${encodeURIComponent(
+      this.registration_number.toLowerCase()
+    )}`;
   }
 }
 

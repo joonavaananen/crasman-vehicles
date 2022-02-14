@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Picture } from '../common';
 
 const VehicleCard = styled.article`
+  position: relative;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -15,6 +17,17 @@ const Container = styled.div`
   gap: 0.8rem;
   height: 100%;
   padding: 1.6rem;
+`;
+
+const Anchor = styled.a`
+  color: unset;
+  text-decoration: none;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
 `;
 
 const Title = styled.h2`
@@ -46,9 +59,11 @@ const VehicleCardContainer = ({
   fuel_type,
   transmission,
   price,
+  url,
   sizes,
+  className,
 }) => (
-  <VehicleCard>
+  <VehicleCard className={className}>
     <Picture aspectRatio={3 / 2}>
       {image?.src && (
         <Image
@@ -63,7 +78,11 @@ const VehicleCardContainer = ({
       )}
     </Picture>
     <Container>
-      <Title>{`${make} ${model}`}</Title>
+      <Link href={url} passHref>
+        <Anchor>
+          <Title>{`${make} ${model}`}</Title>
+        </Anchor>
+      </Link>
       <Price>{price}</Price>
       <SpecificationContainer>
         <Specification>{model_year}</Specification>
