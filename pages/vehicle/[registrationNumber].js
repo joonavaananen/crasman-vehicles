@@ -1,13 +1,17 @@
 import { VehiclePage } from '../../components';
 import { getVehicles, getVehicle } from '../../lib';
 
-const Index = ({ data }) => <VehiclePage {...data} />;
+const VehiclePageContainer = ({ data }) => <VehiclePage {...data} />;
 
 const getStaticPaths = async () => {
   const { vehicles } = await getVehicles({ page: -1 });
 
   const paths = vehicles.map((vehicle) => ({
-    params: { registrationNumber: vehicle.registration_number },
+    params: {
+      registrationNumber: encodeURIComponent(
+        vehicle.registration_number?.toLowerCase()
+      ),
+    },
   }));
 
   return {
@@ -28,6 +32,6 @@ const getStaticProps = async ({ params }) => {
   };
 };
 
-export default Index;
+export default VehiclePageContainer;
 
 export { getStaticPaths, getStaticProps };

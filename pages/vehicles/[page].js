@@ -2,7 +2,7 @@ import useSWR from 'swr';
 import { VehicleListPage } from '../../components';
 import { getVehicles } from '../../lib';
 
-const Index = ({ data: fallbackData }) => {
+const VehicleListPageContainer = ({ data: fallbackData }) => {
   const { page } = fallbackData;
   const { data } = useSWR(`/api/vehicles?page=${page}`, { fallbackData });
 
@@ -10,10 +10,10 @@ const Index = ({ data: fallbackData }) => {
 };
 
 const getStaticPaths = async () => {
-  const { pageCount } = await getVehicles({ page: -1 });
+  const { pageCount } = await getVehicles();
 
   const paths = Array.from({ length: pageCount }, (_, index) => ({
-    params: { route: [`${index + 1}`] },
+    params: { page: `${index + 1}` },
   }));
 
   return {
@@ -23,7 +23,7 @@ const getStaticPaths = async () => {
 };
 
 const getStaticProps = async ({ params }) => {
-  const [page] = params.route;
+  const { page } = params;
   const data = page > 0 ? await getVehicles({ page }) : null;
 
   if (!data?.vehicles?.length && page != 1)
@@ -40,6 +40,6 @@ const getStaticProps = async ({ params }) => {
   };
 };
 
-export default Index;
+export default VehicleListPageContainer;
 
 export { getStaticPaths, getStaticProps };
