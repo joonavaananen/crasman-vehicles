@@ -20,6 +20,8 @@ const getStaticProps = async ({ params }) => {
   const { registrationNumber } = params;
   const data = await getVehicle(registrationNumber);
 
+  if (!data) return { notFound: true };
+
   return {
     props: { data },
     revalidate: 900,

@@ -1,56 +1,16 @@
-import styled from 'styled-components';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Picture } from '../common';
+import {
+  Card,
+  Picture,
+  CardContent,
+  SecondaryHeading,
+  Anchor,
+  Price,
+  Specifications,
+} from '../common';
 
-const VehicleCard = styled.article`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  border: 0.1rem solid ${({ theme }) => theme.color.vader};
-`;
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-  height: 100%;
-  padding: 1.6rem;
-`;
-
-const Anchor = styled.a`
-  color: unset;
-  text-decoration: none;
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-  }
-`;
-
-const Title = styled.h2`
-  margin: 0;
-  color: ${({ theme }) => theme.color.maul};
-  font-size: 2rem;
-`;
-
-const Price = styled.span`
-  font-size: 2rem;
-  font-weight: bold;
-`;
-
-const SpecificationContainer = styled.div`
-  display: flex;
-  gap: 1.6rem;
-`;
-
-const Specification = styled.span`
-  color: ${({ theme }) => theme.color.vader};
-`;
-
-const VehicleCardContainer = ({
+const VehicleCard = ({
   make,
   model,
   model_year,
@@ -61,9 +21,8 @@ const VehicleCardContainer = ({
   price,
   url,
   sizes,
-  className,
 }) => (
-  <VehicleCard className={className}>
+  <Card as={'article'}>
     <Picture aspectRatio={3 / 2}>
       {image?.src && (
         <Image
@@ -77,25 +36,22 @@ const VehicleCardContainer = ({
         />
       )}
     </Picture>
-    <Container>
+    <CardContent>
       {url ? (
         <Link href={url} passHref>
-          <Anchor>
-            <Title>{`${make} ${model}`}</Title>
+          <Anchor overflow>
+            <SecondaryHeading>{`${make} ${model}`}</SecondaryHeading>
           </Anchor>
         </Link>
       ) : (
         <Title>{`${make} ${model}`}</Title>
       )}
       <Price>{price}</Price>
-      <SpecificationContainer>
-        <Specification>{model_year}</Specification>
-        <Specification>{kilometrage}</Specification>
-        <Specification>{fuel_type}</Specification>
-        <Specification>{transmission}</Specification>
-      </SpecificationContainer>
-    </Container>
-  </VehicleCard>
+      <Specifications
+        specifications={[model_year, kilometrage, fuel_type, transmission]}
+      />
+    </CardContent>
+  </Card>
 );
 
-export { VehicleCardContainer as VehicleCard };
+export { VehicleCard };

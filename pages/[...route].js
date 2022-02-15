@@ -24,7 +24,15 @@ const getStaticPaths = async () => {
 
 const getStaticProps = async ({ params }) => {
   const [page] = params.route;
-  const data = await getVehicles({ page });
+  const data = page > 0 ? await getVehicles({ page }) : null;
+
+  if (!data?.vehicles?.length && page != 1)
+    return {
+      redirect: {
+        destination: '/',
+        statusCode: 303,
+      },
+    };
 
   return {
     props: { data },

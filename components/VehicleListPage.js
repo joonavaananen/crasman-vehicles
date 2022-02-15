@@ -1,18 +1,15 @@
 import styled from 'styled-components';
-import { Page, Main, Pagination } from './common';
+import { Page, Header, PrimaryHeading, Main, Pagination } from './common';
 import { VehicleList } from './vehicle-list-page';
 
-const Header = styled.header``;
-
-const Heading = styled.h1`
-  margin-top: 0;
-  color: ${({ theme }) => theme.color.maul};
+const StyledPrimaryHeading = styled(PrimaryHeading)`
+  margin-bottom: 2rem;
 `;
 
 const VehicleListPage = ({ totalCount, vehicles, page, pageCount }) => (
   <Page>
     <Header>
-      <Heading>{`${totalCount} vehicles found`}</Heading>
+      <StyledPrimaryHeading>{`${totalCount} vehicles found`}</StyledPrimaryHeading>
     </Header>
     <Main>
       <VehicleList vehicles={vehicles} />

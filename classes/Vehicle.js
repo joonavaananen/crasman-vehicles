@@ -16,7 +16,7 @@ class Vehicle {
     )} km`;
 
     this.url = `/vehicle/${encodeURIComponent(
-      this.registration_number.toLowerCase()
+      this.registration_number?.toLowerCase()
     )}`;
   }
 }
