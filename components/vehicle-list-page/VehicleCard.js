@@ -39,7 +39,7 @@ const VehicleCard = ({
     <CardContent>
       {url ? (
         <Link href={url} passHref>
-          <Anchor overflow>
+          <Anchor overflowing={true}>
             <SecondaryHeading>{`${make} ${model}`}</SecondaryHeading>
           </Anchor>
         </Link>

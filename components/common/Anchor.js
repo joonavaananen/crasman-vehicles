@@ -12,7 +12,7 @@ const Anchor = styled.a`
   color: unset;
   text-decoration: none;
 
-  ${({ overflow }) => overflow && OverflowStyle}
+  ${({ overflowing }) => overflowing && OverflowStyle}
 `;
 
 export { Anchor };
