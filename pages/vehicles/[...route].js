@@ -1,6 +1,6 @@
 import useSWR from 'swr';
-import { VehicleListPage } from '../components';
-import { getVehicles } from '../lib';
+import { VehicleListPage } from '../../components';
+import { getVehicles } from '../../lib';
 
 const Index = ({ data: fallbackData }) => {
   const { page } = fallbackData;

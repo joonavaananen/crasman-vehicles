@@ -8,7 +8,11 @@ module.exports = withPlaiceholder({
   rewrites: async () => [
     {
       source: `/`,
-      destination: `/1`,
+      destination: `/vehicles/1`,
+    },
+    {
+      source: '/:route(\\d{1,})',
+      destination: '/vehicles/:route',
     },
   ],
 });

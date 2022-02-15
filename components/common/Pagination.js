@@ -20,7 +20,7 @@ const PaginationContainer = ({ page = 1, pageCount = 1, pathname = '' }) => (
   <Pagination>
     {page - 1 ? (
       <Link href={{ pathname: `${pathname}/${page - 1}` }} passHref>
-        <Anchor>
+        <Anchor aria-label={'Previous page'}>
           <ChevronLeft />
         </Anchor>
       </Link>
@@ -28,7 +28,7 @@ const PaginationContainer = ({ page = 1, pageCount = 1, pathname = '' }) => (
     <Pages>{`Page ${page} / ${pageCount}`}</Pages>
     {page + 1 <= pageCount ? (
       <Link href={{ pathname: `${pathname}/${page + 1}` }} passHref>
-        <Anchor>
+        <Anchor aria-label={'Next page'}>
           <ChevronRight />
         </Anchor>
       </Link>
