@@ -3,9 +3,7 @@ import { fetcher } from '../utils';
 import { ThemeProvider, GlobalStyle } from '../theme';
 
 const App = ({ Component, pageProps }) => (
-  <SWRConfig
-    value={{ fetcher, revalidateOnMount: false, revalidateOnFocus: false }}
-  >
+  <SWRConfig value={{ fetcher }}>
     <ThemeProvider>
       <GlobalStyle />
       <Component {...pageProps} />
