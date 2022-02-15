@@ -44,7 +44,7 @@ const VehicleCard = ({
           </Anchor>
         </Link>
       ) : (
-        <Title>{`${make} ${model}`}</Title>
+        <SecondaryHeading>{`${make} ${model}`}</SecondaryHeading>
       )}
       <Price>{price}</Price>
       <Specifications
