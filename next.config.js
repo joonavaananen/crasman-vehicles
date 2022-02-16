@@ -1,6 +1,9 @@
 const { withPlaiceholder } = require('@plaiceholder/next');
 
 module.exports = withPlaiceholder({
+  experimental: {
+    styledComponents: true,
+  },
   images: {
     domains: ['picsum.photos'],
   },
@@ -15,4 +18,5 @@ module.exports = withPlaiceholder({
       destination: '/vehicles/:route',
     },
   ],
+  swcMinify: true,
 });
