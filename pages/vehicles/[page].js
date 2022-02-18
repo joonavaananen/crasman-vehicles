@@ -1,10 +1,10 @@
-import useSWR from 'swr';
+// import useSWR from 'swr';
 import { VehicleListPage } from '../../components';
 import { getVehicles } from '../../lib';
 
-const VehicleListPageContainer = ({ data: fallbackData }) => {
-  const { page } = fallbackData;
-  const { data } = useSWR(`/api/vehicles?page=${page}`, { fallbackData });
+const VehicleListPageContainer = ({ data }) => {
+  // const { page } = fallbackData;
+  // const { data } = useSWR(`/api/vehicles?page=${page}`, { fallbackData });
 
   return <VehicleListPage {...data} />;
 };
